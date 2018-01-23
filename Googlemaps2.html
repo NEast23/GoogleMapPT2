@@ -1,0 +1,59 @@
+<!-- Created by Nathan Easton on 1/17/18 -->
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>My Second Google Map</h1>
+<select id='options' onchange='getmap()'>
+  <option value="Italy">Italy</option>
+  <option value="Miami">Florida</option>
+  <option value="Alaska">Alaska</option>
+  <option value="Indiana">Indiana</option>
+</select>
+
+<div id="googleMap" style="width:100%;height:400px;"></div>
+<script>
+  function getmap(){
+    var e = document.getElementById('options');
+    if(e.value == "Italy"){
+      myMap(41.8719, 12.5674);
+    }else if (e.value == "Miami"){
+      myMap(25.761681, -80.191788);
+    }else if (e.value == "Alaska"){
+      myMap(66.160507, -153.369141);
+    }else{
+      myMap(40.273502, -86.126976);
+    }
+  }
+  function myMap(lat, long) {
+    if (lat == null){
+      lat = 41.8719;
+    }
+    if (long == null){
+      long = 12.5674;
+    }
+  var mapCanvas = document.getElementById("googleMap");
+  var myCenter = new google.maps.LatLng(lat, long);
+  var mapOptions = {Center: myCenter, zoom: 10};
+  var map = new google.maps.Map(mapCanvas,mapOptions);
+  var marker = new google.maps.Marker({
+        position: myCenter,
+        animation: google.maps.Animation.BOUNCE });
+       marker.setMap(map);
+    }
+
+
+
+
+</script>
+
+
+
+
+
+
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB-Z9KsHApuQuD4-_bJc42oAMVtRIcX5Wc&callback=myMap"></script>
+
+</body>
+</html>
